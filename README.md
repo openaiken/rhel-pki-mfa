@@ -1,6 +1,6 @@
 # RHEL PKI MFA
 
-This is for RHEL 7 & 8. It requires that you're already joined to the AD Domain with SSSD and that you don't have SELinux disabled. Ansible also needs to already be a sudo-able user in the target system(s).
+This is for RHEL 7 & 8. It requires that you're already joined to the AD Domain with SSSD and that you have SELinux enabled. Ansible also needs to already be a sudo-able user in the target system(s).
 
 
 Override variables in the `enable-rhel-pki-mfa.yml` as needed for the location. Remember to add hosts to the inventory (`hosts`) file. Additional config options are in the `ansible.cfg`, but they are pretty boiler-plate. Modify this playbook and inventory to suit your automation and scaling needs.
