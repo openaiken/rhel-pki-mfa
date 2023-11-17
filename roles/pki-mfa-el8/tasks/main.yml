@@ -1,0 +1,247 @@
+---
+# tasks file for pki-mfa-el8
+- name:
+  yum:
+    name:
+      - pam_ssh_agent_auth
+      - openssl-pkcs11
+      - pcsc-lite
+      - pcsc-lite-ccid
+      - pcsc-lite-libs
+      - opensc
+      - krb5-pkinit
+      - krb5-workstation
+      - realmd
+      - sssd-tools
+      - nss-tools
+      - python3-pexpect
+    state: present
+
+- name: Network Access Prerequisite
+  block:
+    - name: Check HTTP(S) Connectivity to CA Certs Provider
+      uri:
+        url: "{{ dod_certs_url }}"
+        status_code: 200
+      register: result_https
+      ignore_errors: yes
+    
+    - name: Verify Website is Reachable
+      fail:
+        msg: "Failed to connect to Root CA Certs Bundle Provider: {{ dod_certs_url }}"
+      when: result_https is failed
+
+    - name: Check TCP Port Connectivity To OCSP Responder
+      wait_for:
+        host: "{{ ocsp_responder }}"
+        port: 80
+        timeout: 5
+      register: result_ocsp
+      ignore_errors: yes
+    
+    - name: Verify OCSP Responder is Reachable
+      fail:
+        msg: "Failed to connect to OCSP Responder on TCP/80: {{ ocsp_responder }}"
+      when: result_ocsp is failed
+
+- name: Domain Membership Prerequisite
+  block:
+    - name: Discern SSSD Domain Membership Status
+      shell: >
+        realm list --all | grep -B 7 "client-software: sssd" | grep "realm-name" | cut -d\  -f 4 | tr '[:upper:]' '[:lower:]'
+      register: realm_out
+
+    - name: Verify SSSD Membership to Your Specified Domain
+      fail:
+        msg: "This host is not joined with SSSD to the domain specified in the playbook variables Exiting."
+      when: realm_out.stdout != domain_name
+
+- name: SELinux Prerequisite
+  block:
+    - name: Check SELinux Enforcement Status
+      command: getenforce
+      register: selinux_status
+      changed_when: false
+
+    - name: Verify SELinux is not Disabled
+      fail:
+        msg: "SELinux is not in Enforcing or Permissive mode. Please enable SELinux before proceeding."
+      when: selinux_status.stdout == "Disabled"
+
+- name: Sudoers Syntax Prerequisite
+  block:
+    - name: Pre-Check Sudoers File Syntax
+      command: visudo -cs
+      register: visudo_output
+
+    - name: Print Visudo Command Output
+      debug:
+        var: visudo_output.stdout_lines
+
+- name: Place CA Cert Install Script
+  template:
+    src: custom-update-dod-ca.sh.j2
+    dest: /tmp/custom-update-dod-ca.sh
+  
+- name: Install DoD Root CA Certificates (one-off)
+  command: /bin/bash /tmp/custom-update-dod-ca.sh
+  register: certs_install_result
+  ignore_errors: yes
+
+- name: Show Diagnostics On Cert Install Error
+  fail:
+    msg: |
+      DoD Root CA Certificates Installer Script failed with exit code {{ certs_install_result.rc }}
+      ===== stdout =====
+      {{ certs_install_result.stdout | default('N/A') }}
+
+      ===== stderr =====
+      {{ certs_install_result.stderr | default('N/A') }}
+  when: certs_install_result.rc != 0
+  
+- name: Clean up temporary files
+  file:
+    path: /tmp/custom-update-dod-ca.sh
+    state: absent
+
+- name: Generate Kerberos Config File
+  template:
+    src: krb5.conf.j2
+    dest: /etc/krb5.conf
+    mode: '0644'
+  
+- name: Generate SSSD Config File
+  template:
+    src: sssd.conf.j2
+    dest: /etc/sssd/sssd.conf
+
+- name: Place OpenSC Config File
+  template:
+    src: opensc.conf.j2
+    dest: /etc/opensc.conf
+  
+- name: Replace Polkit Action File for Pcscd
+  template:
+    src: org.debian.pcsc-lite.policy.j2
+    dest: /usr/share/polkit-1/actions/org.debian.pcsc-lite.policy
+
+- name: Overwrite system-auth PAM Service
+  template:
+    src: system-auth.j2
+    dest: /etc/pam.d/system-auth
+
+- name: Create Sudoers Drop-In File
+  template:
+    src: custom-sudo.j2
+    dest: /etc/sudoers.d/custom-sudo
+    mode: '0440'
+
+- name: Check Sudoers File Syntax
+  command: visudo -c
+  register: visudo_output
+
+- name: Print Visudo Command Output
+  debug:
+    var: visudo_output.stdout_lines
+
+- name: Overwrite SSHD Config
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+
+- name: Create SSH-Agent PAM Service
+  template:
+    src: ssh-agent-auth.j2
+    dest: /etc/pam.d/ssh-agent-auth
+  
+- name: Replace Polkit PAM service (add SSH-Agent Authentication)
+  template:
+    src: polkit-1.j2
+    dest: /etc/pam.d/polkit-1
+
+- name: Replace Sudo PAM service (add SSH-Agent Authentication)
+  template:
+    src: sudo.j2
+    dest: /etc/pam.d/sudo
+
+- name: Replace Vlock PAM service (add SSH-Agent Authentication)
+  template:
+    src: vlock.j2
+    dest: /etc/pam.d/vlock
+
+- name: Place Custom SELinux Module File for SSSD
+  template:
+    src: custom-allow-p11child-lnkfile.te.j2
+    dest: /tmp/custom-allow-p11child-lnkfile.te
+
+- name: Check Custom SELinux Module for SSSD
+  command: checkmodule -M -m -o custom-allow-p11child-lnkfile.mod custom-allow-p11child-lnkfile.te
+  args:
+    chdir: /tmp
+
+- name: Compile Custom SELinux Module for SSSD
+  command: semodule_package -o custom-allow-p11child-lnkfile.pp -m custom-allow-p11child-lnkfile.mod
+  args:
+    chdir: /tmp
+
+- name: Install Custom SELinux Module for SSSD
+  command: semodule -X 300 -i custom-allow-p11child-lnkfile.pp
+  args:
+    chdir: /tmp
+
+- name: Clean Up Temporary Files
+  file:
+    path: /tmp/module.{te,pp,mod}
+    state: absent
+
+- name: Ensure Presence of SSSD PKI Directory
+  file:
+    path: /etc/sssd/pki
+    state: directory
+
+- name: Symlink SSSD's CA DB to the Host's Default CA Bundle
+  file:
+    src: /etc/pki/tls/certs/ca-bundle.crt
+    dest: /etc/sssd/pki/sssd_auth_ca_db.pem
+    force: true
+    state: link
+
+- name: Replace Console Access Control Config
+  template:
+    src: access.conf.j2
+    dest: /etc/security/access.conf
+
+- name: Enable pcscd Socket
+  systemd:
+    name: pcscd.socket
+    state: started
+    enabled: yes
+  
+- name: Restart pcscd Service
+  systemd:
+    name: pcscd.service
+    state: restarted
+  
+- name: Restart Polkit Service
+  systemd:
+    name: polkit.service
+    state: restarted
+
+- name: Reset SSSD
+  expect:
+    command: sssctl cache-remove
+    echo: true
+    timeout: 10
+    responses:
+      'SSSD must not be running. Stop SSSD now\? \(yes\/no\) \[yes\] ': 'yes'
+      'SSSD backup of local data already exists, override\? \(yes\/no\) \[no\] ': 'yes'
+      'SSSD needs to be running. Start SSSD now\? \(yes\/no\) \[yes\] ': 'yes'
+
+- name: Wait a bit...
+  pause:
+    seconds: 10
+  
+- name: Restart sshd
+  systemd:
+    name: sshd
+    state: restarted

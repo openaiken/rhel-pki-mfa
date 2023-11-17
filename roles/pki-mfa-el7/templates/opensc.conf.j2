@@ -1,0 +1,12 @@
+app default {
+        # debug = 3;
+        # debug_file = opensc-debug.txt;
+        framework pkcs15 {
+                use_file_caching = false;
+        }
+        reader_driver pcsc {
+                # The pinpad is disabled by default,
+                # because of many broken readers out there
+                enable_pinpad = false;
+        }
+}

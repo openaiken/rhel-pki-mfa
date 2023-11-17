@@ -1,0 +1,11 @@
+
+module custom-allow-p11child-lnkfile 1.0;
+
+require {
+        type sssd_t;
+        type sssd_conf_t;
+        class lnk_file read;
+}
+
+#============= sssd_t ==============
+allow sssd_t sssd_conf_t:lnk_file read;

@@ -1,0 +1,14 @@
+# Login access control table.
+#
+# Comment line must start with "#", no space at front.
+# Order of lines is important.
+# 
+# See ACCESS.CONF(5) for more information
+
++:root: cron crond :0 tty1
+
+# START managed zone
+
+# END managed zone
+
+-:ALL EXCEPT ({{ administrator_security_groups | join(', ') }}):ALL

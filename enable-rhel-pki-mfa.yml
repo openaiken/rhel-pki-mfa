@@ -1,0 +1,40 @@
+---
+- name: Configure RHEL 7/8 Host for PKI (Smartcard) Authentication
+  hosts: "{{ my_host }}"
+  become: true
+  # DO NOT set ignore_task_failures to "yes" unless you're using Check mode. only set it on the CLI when using -C!
+  ignore_errors: "{{ ignore_task_failures | default('no') | bool }}"
+  #These vars are set in the respective roles' defaults/main.yaml file, and should be overridden here if applicable.
+  vars:
+    #Notes:
+    # The admin security groups list are Groups (local, or AD Security Groups) that have privileges to sudo and to log in to the physical console.
+    # The domain name is domain/realm-specific. It is should be lowercase and is appended to the DC hostnames.
+    # OCSP Responder is enclave specific. The responder is run by the DISA PKE/PKI Ops program. It assumes HTTP on TCP/80.
+    # The primary/backup DC hostnames should be short, lowercase, and can be from the same site or different sites.
+    # Regex for the UPN (User Principal Name) is used for Certificate Mapping. This is enclave-specific and should not
+    #   be manipulated -- only swapped in place with the correct regional regex.
+    # The DOD Certs URL is the network-accessible location of an up-to-date ZIP containing DER-encoded P7B certificates of all DoD Root CAs for the enclave.
+    administrator_security_groups:
+      - wheel
+      - infrastructure_linux_admins
+    domain_name: domain.example.mil
+    ocsp_responder: ocsp.disa.mil
+    dc_primary: domainctrlr1
+    dc_backup: domainctrlr2
+    upn_regex: (.*@mil)|(.*@DOMAIN\.EXAMPLE\.MIL)
+    dod_certs_url: https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-certificates_pkcs7_DoD.zip
+
+  tasks:
+    #Notes:
+    # The 2 roles here are mostly the same except for minor variations in templates and the modules used in playbooks.
+    # They are kept totally separate so as to not introduce "tech debt" as broken legacy support for old OS releases in modern infrastructure code.
+    # Which role to implement or skip is determined after the "Gather Facts" stage of ansible-playbook.
+    - name: RHEL 8 PKI
+      include_role:
+        name: pki-mfa-el8
+      when: (ansible_distribution_major_version == "8")
+                                                   
+    - name: RHEL 7 PKI
+      include_role:
+        name: pki-mfa-el7
+      when: (ansible_distribution_major_version == "7")

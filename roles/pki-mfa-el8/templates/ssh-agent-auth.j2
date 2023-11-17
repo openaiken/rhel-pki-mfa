@@ -1,0 +1,4 @@
+#%PAM-1.0
+auth      [success=1 default=ignore]    pam_localuser.so
+auth      [success=done default=1]      pam_ssh_agent_auth.so authorized_keys_command=/usr/bin/sss_ssh_authorizedkeys authorized_keys_command_user=nobody
+auth      sufficient                    pam_ssh_agent_auth.so file=~/.ssh/authorized_keys allow_user_owned_authorized_keys_file

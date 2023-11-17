@@ -1,0 +1,96 @@
+#!/bin/bash
+# Import DoD root certificates into linux CA store
+# Modified by Hayden Aiken in Q4 2023
+# So it's a bit messy and deserves revision... but it "should work just fine". :)
+
+check_exit_code() {
+	local exit_code=$?
+	local command_summary="$1"
+	if [ $exit_code -ne 0 ]; then
+        echo "Error: $0 failed with exit code $exit_code attempting: $command_summary"
+        exit $exit_code
+    fi
+}
+
+main() {
+
+	tmpDir=/root/tmp-cert-dir-$(date +'%Y%m%d-%H%M%S')
+	bundle={{ dod_certs_url }}
+	certFileName=dod-root-ca-certs
+	# Set cert directory and update command based on OS
+	source /etc/os-release
+	if [[ $ID	  =~ (fedora|rhel|centos) ||
+		  $ID_LIKE =~ (fedora|rhel|centos) ]]; then
+		certdir=/etc/pki/ca-trust/source/anchors
+		update=update-ca-trust
+	elif [[ $ID	  =~ (debian|ubuntu|mint) ||
+			$ID_LIKE =~ (debian|ubuntu|mint) ]]; then
+		certdir=/usr/local/share/ca-certificates
+		update=update-ca-certificates
+	else
+		certdir=$1
+		update=$2
+	fi
+
+	[[ -n $certdir && -n $update ]] || {
+		echo 'Unable to autodetect OS using /etc/os-release.'
+		echo 'Please provide CA certificate directory and update command.'
+		echo 'Example: $0 /cert/store/location update-cmd'
+		exit 1
+	}
+
+	# Extract the bundle
+	mkdir $tmpDir
+	cd $tmpDir
+	mkdir individualCerts
+	zipName=${bundle##*/}
+	curl --insecure -s $bundle -o $zipName
+	check_exit_code "curl (download bundle)"
+	unzip -qj $zipName -d $tmpDir
+	touch $certFileName
+	# Convert the PKCS#7 bundle into individual PEM files
+	rawCertBundleName=$(ls | grep '\.p7b' | grep -viE 'root[_-]*ca' | grep -i der | head -n 1)
+	openssl pkcs7 -inform DER -outform PEM -in $rawCertBundleName -print_certs | 
+		awk -F '[cC][nN][[:space:]]*=[[:space:]]*' -v out_dir="individualCerts" '
+			BEGIN {C=0;}
+			/^issuer/ {issuer_name=($NF); gsub (" ", "_", issuer_name);}
+			/^subject/ {subject_name=($NF); gsub(" ", "_", subject_name);}
+			/^-----BEGIN CERTIFICATE-----$/ { 
+					filename = sprintf("%s/%s-%s.pem", out_dir, subject_name, issuer_name);
+					cert_data = $0; 
+					while (getline) {
+							cert_data = cert_data "\n" $0;
+							if (/^-----END CERTIFICATE-----$/) {
+									print cert_data > (individualCerts filename);
+									close(filename);
+									break;
+							}
+					}
+			}'
+	check_exit_code "openssl (pkcs7) and awk (splitting certs)"
+	for i in individualCerts/*.pem; do
+		name=$(basename $i \.pem)
+		cat $i >> $certFileName
+		echo "" >> $certFileName
+		certutil -A -n "$name" -t "CT,CT,CT" -d /etc/pki/nssdb -a -i $i
+		check_exit_code "certutil (adding $name to nssdb)"
+	done
+
+	# Remove temp files and update certificate stores
+	cd $certdir
+	cp $tmpDir/$certFileName ./$certFileName.pem
+	chown root:root $certFileName.pem
+	chmod 444 $certFileName.pem
+	restorecon $certFileName.pem
+	rm -rf $tmpDir
+	$update
+	check_exit_code "$update (updating the system's default CA trust store)"
+}
+
+if [ "$EUID" -ne 0 ]; then
+		echo "Error: This script must be run with root/sudo privileges."
+		exit 1
+fi
+
+# Only execute if not being sourced
+[[ ${BASH_SOURCE[0]} == "$0" ]] && main "$@"

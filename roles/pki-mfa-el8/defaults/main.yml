@@ -1,0 +1,11 @@
+---
+# defaults file for pki-mfa-el8
+administrator_security_groups:
+  - wheel
+  - infrastructure_linux_admins
+domain_name: domain.example.mil
+ocsp_responder: ocsp.disa.mil
+dc_primary: domainctrlr1
+dc_backup: domainctrlr2
+upn_regex: (.*@mil)|(.*@DOMAIN\.EXAMPLE\.MIL)
+dod_certs_url: https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-certificates_pkcs7_DoD.zip

@@ -1,0 +1,12 @@
+Defaults !targetpw
+Defaults !rootpw
+Defaults !runaspw
+
+#This line enables SSH Agent forwarding when using sudo commands, which is crucial for continuing to be able to authenticate.
+Defaults env_keep += "SSH_AUTH_SOCK"
+
+Defaults timestamp_timeout=0
+root    ALL=(ALL)       ALL
+{% for group in administrator_security_groups %}
+%{{ group }} ALL=(ALL)       ALL
+{% endfor %}

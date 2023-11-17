@@ -1,0 +1,33 @@
+#Baseline SSHD Config
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+RekeyLimit 1G 1h
+SyslogFacility AUTHPRIV
+PasswordAuthentication yes
+ChallengeResponseAuthentication no
+GSSAPICleanupCredentials no
+UsePAM yes
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+Subsystem       sftp    /usr/libexec/openssh/sftp-server
+Protocol 2
+Ciphers aes256-ctr,aes192-ctr,aes128-ctr
+Banner /etc/issue
+ClientAliveInterval 600
+ClientAliveCountMax 1
+PermitRootLogin no
+IgnoreUserKnownHosts yes
+MACs hmac-sha2-512,hmac-sha2-256
+Compression no
+AuthorizedKeysCommand /usr/bin/sss_ssh_authorizedkeys
+AuthorizedKeysCommandUser nobody
+#Options required for RHEL 8 STIG even though they are default
+StrictModes yes
+KerberosAuthentication no
+PermitUserEnvironment no
+PrintLastLog yes
+X11Forwarding no
+X11UseLocalhost yes
+GSSAPIAuthentication no

@@ -1,0 +1,37 @@
+[sssd]
+domains = {{ domain_name | lower }}
+config_file_version = 2
+services = nss, pam, ssh, sudo
+
+[domain/{{ domain_name | lower }}]
+id_provider = ad
+access_provider = ad
+ldap_schema = ad
+ldap_id_mapping = True
+ad_use_ldaps = True
+ad_server = {{ dc_primary }}.{{ domain_name | lower }}
+ad_backup_server = {{ dc_backup }}.{{ domain_name | lower }}
+ad_domain = {{ domain_name | lower }}
+krb5_realm = {{ domain_name | upper }}
+krb5_renewable_lifetime = 7d
+krb5_lifetime = 24h
+krb5_renew_interval = 4h
+dyndns_update = False
+cache_credentials = False
+realmd_tags = manages-system,joined-with-adcli
+use_fully_qualified_names = False
+default_shell = /bin/bash
+override_homedir = /home/AD/%u
+fallback_homedir = /home/AD/%u
+
+[pam]
+pam_account_expired_message = Account expired. Contact Support.
+pam_account_locked_message = Account locked. Contact Support.
+pam_cert_auth = True
+p11_child_timeout = 60
+pam_p11_allowed_services = +vlock, +sshd, +polkit-1
+
+[certmap/{{ domain_name | lower }}/otherNamePattern_and_EKUclientAuth]
+matchrule = &&<SAN>{{ upn_regex }}<EKU>clientAuth
+maprule = LDAPU1:(altSecurityIdentities=X509:<I>{issuer_dn!ad}<SR>{serial_number!hex_ur})
+domains = {{ domain_name | lower }}

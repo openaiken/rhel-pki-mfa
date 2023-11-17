@@ -1,0 +1,176 @@
+pam_pkcs11 {
+  nullok = true;
+  debug = false; 
+  card_only = true;
+  use_first_pass = false;
+  try_first_pass = false;
+  use_authtok = false;
+  use_pkcs11_module = opensc;
+  pkcs11_module coolkey {
+    module = libcoolkeypk11.so;
+    description = "Cool Key"
+    slot_num = 0;
+    nss_dir = /etc/pki/nssdb;
+    cert_policy = ca, ocsp_on, signature;
+  }
+  pkcs11_module opensc {
+    module = opensc-pkcs11.so;
+    description = "OpenSC PKCS#11 module";
+    # Slot-number to use. One for the first, two for the second and so
+    # on. The default value is zero which means to use the first slot
+    # with an available token.
+    slot_num = 0;
+	
+    # Path to the directory where the NSS CA certificate database is stored.
+    # you can mange the certs in this database with the certutil command in
+    # the package nss-tools
+    nss_dir = /etc/pki/nssdb;
+  
+    # Sets the Certificate Policy, (see above)
+    cert_policy = ca, ocsp_on, signature;
+  }
+
+  # Default pkcs11 module
+  pkcs11_module default {
+    module = /usr/$LIB/pam_pkcs11/pkcs11_module.so;
+    description = "Default pkcs#11 module";
+    slot_num = 0;
+    #ca_dir = /etc/pam_pkcs11/cacerts;
+    #crl_dir = /etc/pam_pkcs11/crls;
+    nss_dir = /etc/pki/nssdb;
+    cert_policy = ca, ocsp_on, signature;
+  }
+  use_mappers = cn, uid, pwent, null;
+  mapper_search_path = /usr/$LIB/pam_pkcs11;
+  mapper generic {
+        debug = true;
+        module = /usr/$LIB/pam_pkcs11/generic_mapper.so;
+        ignorecase = false;
+        cert_item  = cn;
+        mapfile = file:///etc/pam_pkcs11/generic_mapping
+        use_getpwent = false;
+  }
+
+  mapper subject {
+        debug = false;
+        # module = /usr/$LIB/pam_pkcs11/subject_mapper.so;
+        module = internal;
+        ignorecase = false;
+        mapfile = file:///etc/pam_pkcs11/subject_mapping;
+  }
+
+  mapper openssh {
+        debug = false;
+        module = /usr/$LIB/pam_pkcs11/openssh_mapper.so;
+  }
+
+  mapper opensc {
+        debug = false;
+        module = /usr/$LIB/pam_pkcs11/opensc_mapper.so;
+  }
+
+  mapper pwent {
+        debug = false;
+        ignorecase = false;
+        module = internal;
+        # module = /usr/$LIB/pam_pkcs11/pwent_mapper.so;
+  }
+
+  mapper null {
+        debug = false;
+        # module = /usr/$LIB/pam_pkcs11/null_mapper.so;
+        module = internal ;
+        # select behavior: always match, or always fail
+        default_match = false;
+        # on match, select returned user
+        default_user = nobody ;
+  }
+
+  mapper ldap {
+        debug = false;
+        module = /usr/$LIB/pam_pkcs11/ldap_mapper.so;
+        # where base directory resides
+        basedir = /etc/pam_pkcs11/mapdir;
+        # hostname of ldap server
+        ldaphost = "localhost";
+        # Port on ldap server to connect
+        ldapport = 389;
+        # Scope of search: 0 = x, 1 = y, 2 = z
+        scope = 2;
+        # DN to bind with. Must have read-access for user entries under "base"
+        binddn = "cn=pam,o=example,c=com";
+        # Password for above DN
+        passwd = "test";
+        # Searchbase for user entries
+        base = "ou=People,o=example,c=com";
+        # Attribute of user entry which contains the certificate
+        attribute = "userCertificate";
+        # Searchfilter for user entry. Must only let pass user entry for the login user.
+        filter = "(&(objectClass=posixAccount)(uid=%s))"
+  }
+
+  mapper cn {
+        debug = false;
+        module = internal;
+        # module = /usr/$LIB/pam_pkcs11/cn_mapper.so;
+        ignorecase = true;
+        mapfile = file:///etc/pam_pkcs11/cn_map;
+  }
+
+  mapper mail {
+        debug = false;
+        module = internal;
+        # module = /usr/$LIB/pam_pkcs11/mail_mapper.so;
+        # Declare mapfile or
+        # leave empty "" or "none" to use no map 
+        mapfile = file:///etc/pam_pkcs11/mail_mapping;
+        # Some certs store email in uppercase. take care on this
+        ignorecase = true;
+        # Also check that host matches mx domain
+        # when using mapfile this feature is ignored
+        ignoredomain = false;
+  }
+
+  # ms - Use Microsoft Universal Principal Name extension
+  # UPN is in format login@ADS_Domain. No map is needed, just
+  # check domain name.
+  mapper ms {
+        debug = false;
+        module = internal;
+        # module = /usr/$LIB/pam_pkcs11/ms_mapper.so;
+        ignorecase = false;
+        ignoredomain = false;
+        domain = "domain.com";
+  }
+
+  # krb  - Compare againts Kerberos Principal Name
+  mapper krb {
+        debug = false;
+        module = internal;
+        # module = /usr/$LIB/pam_pkcs11/krb_mapper.so;
+        ignorecase = false;
+        mapfile = "none";
+  }
+
+  # uid  - Maps Subject Unique Identifier field (if exist) to login
+  mapper uid {
+        debug = false;
+        module = internal;
+        # module = /usr/$LIB/pam_pkcs11/uid_mapper.so;
+        ignorecase = false;
+        mapfile = "none";
+  }
+
+  # digest - elaborate certificate digest and map it into a file
+  mapper digest {
+        debug = false;
+        module = internal;
+        # module = /usr/$LIB/pam_pkcs11/digest_mapper.so;
+        # algorithm used to evaluate certificate digest
+        # Select one of:
+        # "null","md2","md4","md5","sha","sha1","dss","dss1","ripemd160"
+        algorithm = "sha1";
+        mapfile = file:///etc/pam_pkcs11/digest_mapping;
+        # mapfile = "none";
+  }
+}
