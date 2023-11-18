@@ -1,0 +1,501 @@
+<mxfile host="app.diagrams.net" modified="2023-11-18T23:37:41.854Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="O-ydGDFfjCxPGrVdVmXJ" version="22.1.3" type="device">
+  <diagram name="Page-1" id="xMzHNudvDis3pIOA6Lqi">
+    <mxGraphModel dx="1767" dy="1316" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="500" pageHeight="3500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Oyoqm2z5_ID8skr1JibB-1" value="&lt;div&gt;User / Endpoint&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Lucida Console;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="79" width="200" height="3400" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-20" value="&lt;font color=&quot;#009900&quot;&gt;OpenSSH Client&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="20" y="190" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-21" value="&lt;div&gt;SSH Connection is&lt;/div&gt;&lt;div&gt;initialized; Remote [AD]&lt;/div&gt;&lt;div&gt;username provided&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-20">
+          <mxGeometry y="30" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-47" value="&lt;font color=&quot;#009900&quot;&gt;OpenSSH Client&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="20" y="890" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-48" value="&lt;div&gt;Provides access to&lt;/div&gt;&lt;div&gt;PKCS#11 device via&lt;/div&gt;&lt;div&gt;SSH side channel&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-47">
+          <mxGeometry x="15" y="30" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1" source="5zuzdziKT9FWwSU1FoDg-49" target="5zuzdziKT9FWwSU1FoDg-47">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="102.57831325301203" y="990" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="100" y="1000" />
+              <mxPoint x="100" y="1000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-49" value="&lt;font color=&quot;#009900&quot;&gt;PKCS#11 Driver&lt;br&gt;(Card Reader)&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;startSize=40;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="17.5" y="1020" width="165" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-50" value="&lt;div&gt;Driver and card reader&lt;/div&gt;&lt;div&gt;respond to authentication&lt;/div&gt;&lt;div&gt;challenge&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-49">
+          <mxGeometry x="-5" y="40" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1" source="5zuzdziKT9FWwSU1FoDg-51">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="99.92771084337346" y="1120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-51" value="&lt;font color=&quot;#009900&quot;&gt;User&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="20" y="1150" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-52" value="&lt;div&gt;Enters PIN to unlock&lt;/div&gt;&lt;div&gt;Smart Card&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-51">
+          <mxGeometry x="10" y="40" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-67" value="&lt;font color=&quot;#009900&quot;&gt;OpenSSH Client&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="17.5" y="1760" width="165" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-116" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;shadow=0;" edge="1" parent="5zuzdziKT9FWwSU1FoDg-67" source="5zuzdziKT9FWwSU1FoDg-68">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="60" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-68" value="&lt;div&gt;Extracts SSH RSA Public&lt;/div&gt;&lt;div&gt;Key from User&#39;s PKCS#11&lt;/div&gt;&lt;div&gt;Identity. Adds key to&lt;/div&gt;&lt;div&gt;SSH Agent; Attempts all.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-67">
+          <mxGeometry x="-5" y="25" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-124" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1" source="5zuzdziKT9FWwSU1FoDg-73">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="1940.074074074074" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-73" value="&lt;font color=&quot;#009900&quot;&gt;OpenSSH Client&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="20" y="1890" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-74" value="&lt;div&gt;Responds to challenge/&lt;/div&gt;&lt;div&gt;response by accessing&lt;/div&gt;&lt;div&gt;SSH Private Key&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-73">
+          <mxGeometry x="5" y="30" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1" source="5zuzdziKT9FWwSU1FoDg-75">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100.0769230769231" y="1990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-75" value="&lt;font color=&quot;#009900&quot;&gt;PKCS#11 Driver&lt;br&gt;(Card Reader)&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;startSize=40;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="20" y="2020" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-76" value="&lt;div&gt;Reads SSH Private Key&lt;/div&gt;&lt;div&gt;from unlocked&lt;/div&gt;&lt;div&gt;Smart Card&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-75">
+          <mxGeometry x="5" y="40" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-79" value="&lt;font color=&quot;#009900&quot;&gt;OpenSSH Client&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="20" y="2150" width="160" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-81" value="&lt;font color=&quot;#009900&quot;&gt;User&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="20" y="2280" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-82" value="&lt;div&gt;Full authentication flow&lt;/div&gt;&lt;div&gt;complete. User interacts&lt;/div&gt;&lt;div&gt;with remote shell.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-81">
+          <mxGeometry y="30" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-83" value="" style="endArrow=none;html=1;rounded=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint y="2400" as="sourcePoint" />
+            <mxPoint x="200" y="2400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1" target="5zuzdziKT9FWwSU1FoDg-49">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="990" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-103" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1" source="5zuzdziKT9FWwSU1FoDg-50" target="5zuzdziKT9FWwSU1FoDg-51">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="1131" />
+              <mxPoint x="100" y="1131" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-119" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1" target="5zuzdziKT9FWwSU1FoDg-75">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="1990" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-122" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1" source="5zuzdziKT9FWwSU1FoDg-79" target="5zuzdziKT9FWwSU1FoDg-81">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="2260" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-125" value="&lt;font color=&quot;#009900&quot;&gt;User&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="20" y="2420" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-126" value="&lt;div&gt;Attempts privilege&lt;/div&gt;&lt;div&gt;elevation (e.g. Sudo)&lt;/div&gt;&lt;div&gt;in interactive shell.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-125">
+          <mxGeometry x="10" y="30" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-167" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1" source="5zuzdziKT9FWwSU1FoDg-139" target="5zuzdziKT9FWwSU1FoDg-143">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-139" value="&lt;font color=&quot;#009900&quot;&gt;OpenSSH Client&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="20" y="2940" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-140" value="&lt;div&gt;Receives challenge for&lt;br&gt;&lt;/div&gt;&lt;div&gt;SSH Agent and accesses&lt;br&gt;&lt;/div&gt;&lt;div&gt;SSH Private Key via&lt;/div&gt;&lt;div&gt;PKCS#11 device.&lt;/div&gt;&lt;div&gt;Sends response back to&lt;/div&gt;&lt;div&gt;server.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-139">
+          <mxGeometry y="30" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-168" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1" source="5zuzdziKT9FWwSU1FoDg-143">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="3080" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-143" value="&lt;font color=&quot;#009900&quot;&gt;PKCS#11 Driver&lt;br&gt;(Card Reader)&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;startSize=40;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="20" y="3110" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-144" value="&lt;div&gt;Reads SSH Private Key&lt;/div&gt;&lt;div&gt;from unlocked&lt;/div&gt;&lt;div&gt;Smart Card&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-143">
+          <mxGeometry x="5" y="40" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-149" value="&lt;font color=&quot;#009900&quot;&gt;User&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry x="17.5" y="3240" width="165" height="150" as="geometry">
+            <mxRectangle x="17.5" y="3240" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-150" value="&lt;div&gt;(&lt;i&gt;Pending authorization&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;from privilege escalation&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;service, e.g. the config&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;in /etc/sudoers&lt;/i&gt;)&lt;/div&gt;&lt;div&gt;Successfully&lt;/div&gt;&lt;div&gt;reauthenticated and&lt;/div&gt;&lt;div&gt;authorized to perform&lt;/div&gt;&lt;div&gt;privileged operation.&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-149">
+          <mxGeometry y="20" width="160" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-181" value="" style="endArrow=none;html=1;rounded=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint y="171" as="sourcePoint" />
+            <mxPoint x="200" y="171" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Oyoqm2z5_ID8skr1JibB-2" value="RHEL Server" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Lucida Console;labelBorderColor=none;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="360" y="79" width="200" height="3400" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-18" target="5zuzdziKT9FWwSU1FoDg-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-18" value="&lt;div&gt;SSHD&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="20" y="190" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-19" value="&lt;div&gt;Establishes SSHv2&lt;/div&gt;&lt;div&gt;communication; Delays&lt;/div&gt;&lt;div&gt;pubkey auth; Defers to&lt;/div&gt;&lt;div&gt;PAM for session&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-18">
+          <mxGeometry y="25" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-175" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-25" target="5zuzdziKT9FWwSU1FoDg-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-25" value="PAM" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="17.5" y="320" width="165" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-26" value="&lt;div&gt;Verifies user is not&lt;/div&gt;&lt;div&gt;de-authorized; Calls&lt;/div&gt;&lt;div&gt;SSS module to begin&lt;/div&gt;&lt;div&gt;Certificate Authentication.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-25">
+          <mxGeometry x="-5" y="25" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-27" value="SSSD" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="17.5" y="450" width="165" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-28" value="&lt;div&gt;- Looks up User in AD,&lt;/div&gt;&lt;div&gt;requests PAC&lt;/div&gt;&lt;div&gt;- Receives User PAC and&lt;/div&gt;&lt;div&gt;TGT from AD&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-27">
+          <mxGeometry y="25" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-33" value="SSSD" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="20" y="60" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-34" value="&lt;div&gt;Joined to AD Domain&lt;/div&gt;&lt;div&gt;as member server;&lt;/div&gt;&lt;div&gt;Is a Kerberos Principal.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-33">
+          <mxGeometry y="30" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-35" value="" style="endArrow=none;html=1;rounded=0;shadow=0;" edge="1" parent="5zuzdziKT9FWwSU1FoDg-33">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-20" y="110" as="sourcePoint" />
+            <mxPoint x="180" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-38" value="SSSD" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="17.5" y="680" width="165" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-39" value="&lt;div&gt;- Select relevant client cert&lt;/div&gt;&lt;div&gt;based on Matching Rule&lt;/div&gt;&lt;div&gt;- Compare client cert(s) to&lt;/div&gt;&lt;div&gt;Mapping Rule to ensure&lt;/div&gt;&lt;div&gt;validity for authentication&lt;/div&gt;&lt;div&gt;- Verify cert signature&lt;/div&gt;&lt;div&gt;validity using CA store&lt;/div&gt;&lt;div&gt;- Check Revocation Status&lt;/div&gt;&lt;div&gt;by querying OCSP&lt;/div&gt;&lt;div&gt;Responder&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-38">
+          <mxGeometry x="-5" y="20" width="170" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-45" value="PCSCD / OpenSC" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="17.5" y="890" width="165" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-46" value="&lt;div&gt;Accesses client&#39;s PKCS#11&lt;/div&gt;&lt;div&gt;device to perform&lt;/div&gt;&lt;div&gt;challenge/response,&lt;/div&gt;&lt;div&gt;thus verifying possession&lt;/div&gt;&lt;div&gt;of the authenticator&lt;/div&gt;&lt;div&gt;(smart card). &lt;i&gt;Polkit must&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;be configured to allow this,&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;since the session is not yet&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;established.&lt;/i&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-45">
+          <mxGeometry x="-5" y="20" width="170" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-53" value="SSSD" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="15" y="1180" width="170" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-54" value="&lt;div&gt;- Completes authentication&lt;/div&gt;&lt;div&gt;with CIM&lt;/div&gt;&lt;div&gt;- Requests Kerberos Ticket&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Securely stores Kerberos&lt;/div&gt;&lt;div&gt;Service Ticket for User&lt;/div&gt;&lt;div&gt;(&lt;i&gt;The User is now a&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;Kerberos&lt;/i&gt;&lt;i&gt; Principal&lt;/i&gt;)&lt;/div&gt;&lt;div&gt;- Reports to PAM that&lt;/div&gt;&lt;div&gt;The user is authenticated &lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-53">
+          <mxGeometry x="-10" y="20" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-57" value="PAM" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="17.5" y="1370" width="165" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-58" value="&lt;div&gt;PAM returns Success&lt;/div&gt;&lt;div&gt;message to SSHD service,&lt;/div&gt;&lt;div&gt;indicating it has&lt;/div&gt;&lt;div&gt;authenticated the user&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-57">
+          <mxGeometry x="-5" y="25" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-112" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-61" target="5zuzdziKT9FWwSU1FoDg-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-61" value="&lt;div&gt;SSHD&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="20" y="1500" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-62" value="&lt;div&gt;- Resumes Pubkey auth&lt;/div&gt;&lt;div&gt;- Requests list of&lt;/div&gt;&lt;div&gt;SSH Authorized Keys&lt;/div&gt;&lt;div&gt;from SSSD&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-61">
+          <mxGeometry y="25" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-63" value="SSSD" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="20" y="1630" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-64" value="&lt;div&gt;Extracts SSH RSA&lt;/div&gt;&lt;div&gt;Public Key from User&#39;s&lt;/div&gt;&lt;div&gt;verified X.509 Certificate&lt;/div&gt;&lt;div&gt;and returns it to SSHD&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-63">
+          <mxGeometry y="25" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-65" value="&lt;div&gt;SSHD&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="20" y="1760" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-66" value="&lt;div&gt;Informs SSH Client to&lt;/div&gt;&lt;div&gt;present available Public&lt;/div&gt;&lt;div&gt;Keys&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-65">
+          <mxGeometry y="30" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-71" value="&lt;div&gt;SSHD&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="20" y="1890" width="160" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-72" value="&lt;div&gt;- Accepts the SSH RSA&lt;/div&gt;&lt;div&gt;Public Key that matches&lt;/div&gt;&lt;div&gt;SSSD&#39;s Authorized&lt;/div&gt;&lt;div&gt;Keys retrieval&lt;/div&gt;&lt;div&gt;- Initiates SSH key&lt;/div&gt;&lt;div&gt;challenge/response&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-71">
+          <mxGeometry y="27" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-77" value="&lt;div&gt;SSHD&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="17.5" y="2100" width="165" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-78" value="&lt;div&gt;Completes establishment&lt;/div&gt;&lt;div&gt;of SSH client session,&lt;/div&gt;&lt;div&gt;opens PTY, presents User&lt;/div&gt;&lt;div&gt;with interactive shell&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-77">
+          <mxGeometry x="-5" y="25" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.502;entryY=-0.021;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-27" target="5zuzdziKT9FWwSU1FoDg-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.484;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-39" target="5zuzdziKT9FWwSU1FoDg-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" target="5zuzdziKT9FWwSU1FoDg-61">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="1470" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" target="5zuzdziKT9FWwSU1FoDg-65">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="1730" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-117" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=-0.021;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" target="5zuzdziKT9FWwSU1FoDg-71">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="1860" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-121" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-71" target="5zuzdziKT9FWwSU1FoDg-77">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-127" value="PAM" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="17.5" y="2420" width="165" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-128" value="&lt;div&gt;PAM&#39;s sudo service file&lt;/div&gt;&lt;div&gt;calls the SSH Agent Auth&lt;/div&gt;&lt;div&gt;module to reauthenticate&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-127">
+          <mxGeometry x="-5" y="30" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-129" value="&lt;div&gt;SSHD&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="20" y="2550" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-130" value="Requests list of&lt;div&gt;SSH Authorized Keys&lt;/div&gt;from SSSD" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-129">
+          <mxGeometry x="10" y="30" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-156" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-131" target="5zuzdziKT9FWwSU1FoDg-135">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-131" value="SSSD" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="20" y="2680" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-132" value="&lt;div&gt;(&lt;i&gt;Requests User PAC from&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;AD &lt;u&gt;if&lt;/u&gt; missing Cert&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;Information&lt;/i&gt;)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-131">
+          <mxGeometry y="30" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-135" value="SSSD" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="20" y="2810" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-136" value="&lt;div&gt;Extracts SSH RSA&lt;/div&gt;&lt;div&gt;Public Key from User&#39;s&lt;/div&gt;&lt;div&gt;verified X.509 Certificate&lt;/div&gt;and returns it to SSHD" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-135">
+          <mxGeometry y="25" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-137" value="&lt;div&gt;SSHD&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="17.5" y="2940" width="165" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-138" value="&lt;div&gt;Checks SSH Agent for&lt;/div&gt;&lt;div&gt;matching SSH Public Keys.&lt;/div&gt;&lt;div&gt;Matches key and initiates&lt;/div&gt;&lt;div&gt;challenge/response with&lt;/div&gt;&lt;div&gt;key to authorize its use.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-137">
+          <mxGeometry x="-5" y="17" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-147" value="PAM" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-2">
+          <mxGeometry x="17.5" y="3200" width="165" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-148" value="&lt;div&gt;Receives Success message&lt;/div&gt;&lt;div&gt;from SSH Agent Auth&lt;/div&gt;&lt;div&gt;module, completing the&lt;br&gt;&lt;/div&gt;&lt;div&gt;Auth stack, and&lt;/div&gt;&lt;div&gt;successfully&lt;/div&gt;&lt;div&gt;reauthenticating the User.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-147">
+          <mxGeometry x="-5" y="20" width="170" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-152" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-127" target="5zuzdziKT9FWwSU1FoDg-129">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-153" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-130" target="5zuzdziKT9FWwSU1FoDg-131">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-163" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.484;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-135" target="5zuzdziKT9FWwSU1FoDg-137">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-169" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.485;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-138" target="5zuzdziKT9FWwSU1FoDg-147">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-176" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.485;entryY=0.006;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-46" target="5zuzdziKT9FWwSU1FoDg-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-177" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.471;entryY=-0.029;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-2" source="5zuzdziKT9FWwSU1FoDg-54" target="5zuzdziKT9FWwSU1FoDg-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Oyoqm2z5_ID8skr1JibB-3" value="&lt;div&gt;Central Identity Manager (CIM)&lt;/div&gt;&lt;div&gt;(i.e. AD)&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fontFamily=Lucida Console;fillColor=#dae8fc;strokeColor=#6c8ebf;fillStyle=auto;gradientColor=none;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="680" y="79" width="200" height="3400" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-29" value="&lt;font color=&quot;#0000ff&quot;&gt;Domain Services&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-3">
+          <mxGeometry x="15" y="450" width="170" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-30" value="&lt;div&gt;- Receives User lookup&lt;/div&gt;&lt;div&gt;request; Adheres to&lt;/div&gt;&lt;div&gt;applicable policies&lt;/div&gt;&lt;div&gt;- Gets TGT from the TGS&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Returns User metadata,&lt;/div&gt;&lt;div&gt;authorizations, Certificate,&lt;/div&gt;&lt;div&gt;Cert Identity, TGT, groups...&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-29">
+          <mxGeometry x="-10" y="20" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-31" value="&lt;font color=&quot;#0000ff&quot;&gt;Kerberos KDC&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-3">
+          <mxGeometry x="22.500000000000227" y="60" width="165" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-32" value="&lt;div&gt;Maintains relationship&lt;/div&gt;&lt;div&gt;and connection security /&lt;/div&gt;&lt;div&gt;authenticity with member&lt;/div&gt;&lt;div&gt;server.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-31">
+          <mxGeometry x="-5" y="25" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-37" value="" style="endArrow=none;html=1;rounded=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="170" as="sourcePoint" />
+            <mxPoint y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-55" value="&lt;font color=&quot;#0000ff&quot;&gt;Kerberos KDC&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-3">
+          <mxGeometry x="17.500000000000227" y="1240" width="165" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-180" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;shadow=0;" edge="1" parent="5zuzdziKT9FWwSU1FoDg-55" source="5zuzdziKT9FWwSU1FoDg-56">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-147.50000000000023" y="62" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-56" value="&lt;div&gt;- Receives TGT from&lt;/div&gt;&lt;div&gt;member server&lt;/div&gt;&lt;div&gt;- New session key is&lt;/div&gt;&lt;div&gt;generated and a&lt;/div&gt;&lt;div&gt;service ticket is returned&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-55">
+          <mxGeometry x="-5" y="17" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-3" source="5zuzdziKT9FWwSU1FoDg-59">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100.0666666666666" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-59" value="&lt;font color=&quot;#0000ff&quot;&gt;Kerberos KDC&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-3">
+          <mxGeometry x="20.000000000000227" y="610" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-60" value="&lt;div&gt;Kerberos TGS generates&lt;/div&gt;&lt;div&gt;and provides TGT&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-59">
+          <mxGeometry y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-85" value="" style="endArrow=none;html=1;rounded=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint y="2400" as="sourcePoint" />
+            <mxPoint x="200" y="2400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="Oyoqm2z5_ID8skr1JibB-3" source="5zuzdziKT9FWwSU1FoDg-30" target="5zuzdziKT9FWwSU1FoDg-59">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="591" />
+              <mxPoint x="100" y="591" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-133" value="&lt;font color=&quot;#0000ff&quot;&gt;Domain Services&lt;br&gt;&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Lucida Console;labelBackgroundColor=none;fontColor=#CC0000;labelBorderColor=none;shadow=0;" vertex="1" parent="Oyoqm2z5_ID8skr1JibB-3">
+          <mxGeometry x="17.500000000000227" y="2680" width="165" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-134" value="&lt;div&gt;&lt;i&gt;(Receives and Responds to&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;member server request&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;for User PAC (metadata,&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;Cert info, groups...))&lt;br&gt;&lt;/i&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="5zuzdziKT9FWwSU1FoDg-133">
+          <mxGeometry x="-5" y="25" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-40" value="&lt;div&gt;Default&lt;/div&gt;&lt;div&gt;OCSP&lt;/div&gt;&lt;div&gt;Responder &lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#ffe6cc;strokeColor=#d79b00;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="890" y="879" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-84" value="" style="endArrow=none;html=1;rounded=0;shadow=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="2479" as="sourcePoint" />
+            <mxPoint x="560" y="2479" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-86" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.015;entryY=0.462;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.031;exitY=0.433;exitDx=0;exitDy=0;exitPerimeter=0;width=8.148148148148147;startSize=3.5629629629629624;endSize=3.5629629629629624;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-34" target="5zuzdziKT9FWwSU1FoDg-32">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="550" y="299" as="sourcePoint" />
+            <mxPoint x="650" y="199" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-21" target="5zuzdziKT9FWwSU1FoDg-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;shadow=0;" edge="1" parent="1" target="5zuzdziKT9FWwSU1FoDg-30">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="569" as="sourcePoint" />
+            <mxPoint x="690" y="560" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="550" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-30" target="5zuzdziKT9FWwSU1FoDg-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-97" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.999;exitY=0.81;exitDx=0;exitDy=0;exitPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-39" target="5zuzdziKT9FWwSU1FoDg-40">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="919" as="sourcePoint" />
+            <mxPoint x="750" y="869" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-46" target="5zuzdziKT9FWwSU1FoDg-47">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="1019" />
+              <mxPoint x="340" y="1019" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.029;entryY=0.215;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-47" target="5zuzdziKT9FWwSU1FoDg-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.996;entryY=0.495;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-66" target="5zuzdziKT9FWwSU1FoDg-68">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-118" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-72" target="5zuzdziKT9FWwSU1FoDg-73">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="2019" />
+              <mxPoint x="340" y="2019" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-123" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1.025;entryY=0.103;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-78" target="5zuzdziKT9FWwSU1FoDg-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-151" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.004;entryY=0.341;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-125" target="5zuzdziKT9FWwSU1FoDg-128">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-154" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.008;entryY=0.499;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-132" target="5zuzdziKT9FWwSU1FoDg-134">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-155" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.997;entryY=0.499;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-134" target="5zuzdziKT9FWwSU1FoDg-132">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-164" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.32;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-138" target="5zuzdziKT9FWwSU1FoDg-140">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-165" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.009;entryY=0.499;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-140" target="5zuzdziKT9FWwSU1FoDg-138">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="298" y="3081" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-170" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-148">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="3349" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-171" value="&lt;div style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;DoD PKI MFA for RHEL SSH - Authentication Flow&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 16px;&quot;&gt;Version 1.0&lt;br style=&quot;font-size: 16px;&quot;&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontFamily=Courier New;fontStyle=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="450" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-172" value="&lt;div align=&quot;right&quot; style=&quot;font-size: 16px;&quot;&gt;Author:&lt;b&gt; Hayden Aiken &lt;/b&gt;(hayden@openaiken.net)&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div align=&quot;right&quot; style=&quot;font-size: 16px;&quot;&gt;Date: 18 November 2023&lt;br style=&quot;font-size: 16px;&quot;&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontFamily=Courier New;fontStyle=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="510" y="30" width="450" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-80" value="&lt;div&gt;Requests SSH Agent&lt;/div&gt;&lt;div&gt;Forwarding with Server.&lt;br&gt;&lt;/div&gt;&lt;div&gt;Constructs interface for&lt;/div&gt;&lt;div&gt;remote interactive shell&lt;/div&gt;&lt;div&gt;for User.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Lucida Console;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="2247" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5zuzdziKT9FWwSU1FoDg-178" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.008;entryY=0.147;entryDx=0;entryDy=0;entryPerimeter=0;shadow=0;" edge="1" parent="1" source="5zuzdziKT9FWwSU1FoDg-54" target="5zuzdziKT9FWwSU1FoDg-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
